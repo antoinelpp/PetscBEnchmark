@@ -50,11 +50,11 @@ contains
 
     case('-xmax')
       ! print '(a)', '  -i, --input_dir   set the value of the input directory'
-      read( value, '(I3)', iostat=ios) xmax_arg
+      read( value, '(I10)', iostat=ios) xmax_arg
 
     case('-ymax')
       ! print '(a)', '  -i, --input_dir   set the value of the input directory'
-      read( value, '(I3)', iostat=ios) ymax_arg
+      read( value, '(I10)', iostat=ios) ymax_arg
 
     case default
       stop "Argument de commande invalide"// trim(arg)

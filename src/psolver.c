@@ -173,12 +173,14 @@ void petsc_solver_(double *bb, double *xx, int *log_view){
   // Generate the random sol:
   //PetscRandomCreate(PETSC_COMM_WORLD,&rctx);
 
-  DMCreateGlobalVector(da, &x_exact);
+  //DMCreateGlobalVector(da, &x_exact);
   //VecSetRandom(x_exact, rctx);
-  PetscRandomDestroy(&rctx);
+  //PetscRandomDestroy(&rctx);
 
   // calculte the good RhS
-  MatMult(A, x_exact, b);
+  //MatMult(A, x_exact, b);
+  //VecView(b,	PETSC_VIEWER_STDOUT_WORLD );
+
   /****************************************************************/
   /* Solve the system */
   ierr = KSPSolve(ksp,b,x);
@@ -221,6 +223,7 @@ void petsc_solver_(double *bb, double *xx, int *log_view){
     ierr = PetscLogView(PETSC_VIEWER_STDOUT_WORLD);
   }
 
+  //VecView(x,	PETSC_VIEWER_STDOUT_WORLD );
 
   DMDAVecGetArray(da, x, &arrayxx);
   for (j=ys; j<ys+ym; j++) {

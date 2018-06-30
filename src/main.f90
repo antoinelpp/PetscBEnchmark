@@ -19,6 +19,8 @@ program main
   CALL mpi_initial()
   CALL topology_creation(xmax, ymax)
 
+  if (rang == 0) print *,"xmax, ymax :", xmax,",",ymax
+
 
   !print *, "KSP TYPE is:", trim(ksp_type), "  CP type is ;", TRIM(pc_type)
 
@@ -44,6 +46,7 @@ program main
   PHI(:) = 0.0
 
   CALL petsc_solver(RHS, PHI, log_view )
+
 
   call pack_vecToTab(tabphi, PHI)
 

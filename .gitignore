@@ -3,3 +3,5 @@ build/
 !test/*.sh
 test/[CcM]*
 test/*/
+
+test/lppic
