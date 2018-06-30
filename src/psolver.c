@@ -148,7 +148,7 @@ void petsc_initialize_(MPI_Fint *COMM, int *M_global, int *N_global,
 void petsc_solver_(double *bb, double *xx, int *log_view){
   int jj, ii;
 
-if (*log_view == 1) {
+  if (*log_view == 1) {
     ierr = PetscLogDefaultBegin();
   }
 
@@ -171,10 +171,10 @@ if (*log_view == 1) {
 
 
   // Generate the random sol:
-  PetscRandomCreate(PETSC_COMM_WORLD,&rctx);
+  //PetscRandomCreate(PETSC_COMM_WORLD,&rctx);
 
   DMCreateGlobalVector(da, &x_exact);
-  VecSetRandom(x_exact, rctx);
+  //VecSetRandom(x_exact, rctx);
   PetscRandomDestroy(&rctx);
 
   // calculte the good RhS
@@ -197,22 +197,22 @@ if (*log_view == 1) {
      PetscPrintf(PETSC_COMM_WORLD,"\nnumber of Iteration : %d.\n", its);
     }
 
-    {
-      Vec          error;
-      PetscScalar  errorNorm, xnorm;
-
-      VecDuplicate(x, &error);
-      VecCopy(x, error);
-      VecAXPY(error, -1, x_exact);
-      VecNorm(error, NORM_2, &errorNorm);
-      VecNorm(x, NORM_2, &xnorm);
-      PetscPrintf(PETSC_COMM_WORLD, "norm (L2) of x : %6.4e \n", xnorm );
-      PetscPrintf(PETSC_COMM_WORLD, "Error norm (L2) %6.4e, relative norm %6.4e \n", errorNorm, errorNorm / xnorm  );
-      VecNorm(error, NORM_INFINITY, &errorNorm);
-      VecNorm(x, NORM_INFINITY, &xnorm);
-      PetscPrintf(PETSC_COMM_WORLD, "Error norm (Linf) %6.4e, relative norm %6.4e \n", errorNorm, errorNorm / xnorm  );
-
-    }
+    // {
+    //   Vec          error;
+    //   PetscScalar  errorNorm, xnorm;
+    //
+    //   VecDuplicate(x, &error);
+    //   VecCopy(x, error);
+    //   VecAXPY(error, -1, x_exact);
+    //   VecNorm(error, NORM_2, &errorNorm);
+    //   VecNorm(x, NORM_2, &xnorm);
+    //   PetscPrintf(PETSC_COMM_WORLD, "norm (L2) of x : %6.4e \n", xnorm );
+    //   PetscPrintf(PETSC_COMM_WORLD, "Error norm (L2) %6.4e, relative norm %6.4e \n", errorNorm, errorNorm / xnorm  );
+    //   VecNorm(error, NORM_INFINITY, &errorNorm);
+    //   VecNorm(x, NORM_INFINITY, &xnorm);
+    //   PetscPrintf(PETSC_COMM_WORLD, "Error norm (Linf) %6.4e, relative norm %6.4e \n", errorNorm, errorNorm / xnorm  );
+    //
+    // }
 
 
   }

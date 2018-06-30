@@ -9,7 +9,7 @@ endif(COMMAND cmake_policy)
 #Génération de la liste des fichiers sources
 #-------------------------------------------------------------------
 file(GLOB_RECURSE COMMON_SOURCES src psolver.c hsolver.c utilisis_mod.f90)
-file(GLOB_RECURSE TARGET_SOURCES src main.f90)
+file(GLOB_RECURSE TARGET_SOURCES src main.f90 case_mod.f90 mpi_util_mod.f90)
 
 message("Source1: ${COMMON_SOURCES}")
 message("Source 2: ${TARGET_SOURCES}")
