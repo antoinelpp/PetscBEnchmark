@@ -10,6 +10,7 @@ module mpi_util_mod
   integer,dimension(:),allocatable             :: lx,ly
   integer                                      :: sx, sy, ex, ey
 
+  integer, parameter :: dbleprc = kind(1.d0)
 
 contains
 

@@ -49,7 +49,6 @@ contains
 
   end subroutine set_rho
 
-
   subroutine calculate_error(sx,ex,sy,ey)
     implicit none
     integer :: i,j, code
@@ -69,7 +68,6 @@ contains
       print *, "the total error is :", error_red
       print *, "the relativ error is :", error_red/norm
     end if
-
 
   end subroutine calculate_error
 

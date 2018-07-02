@@ -4,7 +4,7 @@ module utilisis_mod
 
   character(len=10) :: ksp_type, pc_type
   integer :: xmax_arg, ymax_arg, log_view=0
-
+  logical :: hypre = .FALSE.
 
 
 
@@ -37,6 +37,8 @@ contains
     if (LEN_TRIM(arg) == 0) stop "erreur argument of command"
 
     select case (trim(arg))
+    case('-lib')
+      if (trim(value) == "hypre") hypre = .TRUE.
     case('-ksp_type')
       ksp_type = trim(value)
 
